@@ -33,7 +33,6 @@ const config: Config = {
       },
       animation: {
         scan: "scan 8s linear infinite",
-        glitch: "glitch 0.3s infinite",
         "bounce-slow": "bounce 2s infinite",
         "fade-in": "fadeIn 0.6s ease-out",
         "slide-up": "slideUp 0.6s ease-out",
@@ -42,14 +41,6 @@ const config: Config = {
         scan: {
           "0%": { top: "-10%" },
           "100%": { top: "110%" },
-        },
-        glitch: {
-          "0%": { transform: "translate(0)", opacity: "0.3" },
-          "20%": { transform: "translate(-2px, 1px)", opacity: "0.5" },
-          "40%": { transform: "translate(2px, -1px)", opacity: "0.3" },
-          "60%": { transform: "translate(-1px, 2px)", opacity: "0.5" },
-          "80%": { transform: "translate(1px, -2px)", opacity: "0.3" },
-          "100%": { transform: "translate(0)", opacity: "0" },
         },
         fadeIn: {
           "0%": { opacity: "0" },

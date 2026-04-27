@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 @layer base {
   * {
@@ -12,12 +10,15 @@
   }
   
   body {
-    @apply bg-surface text-on-surface overflow-x-hidden;
+    background-color: #0e0e13;
+    color: #f9f5fd;
+    overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   body.light {
-    @apply bg-gray-50;
+    background-color: #f5f5f7;
+    color: #1a1a1e;
   }
   
   ::-webkit-scrollbar {
@@ -25,14 +26,13 @@
   }
   
   ::-webkit-scrollbar-track {
-    @apply bg-surface-container-high;
+    background: #1f1f26;
   }
   
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary;
+    background: #a8ffe1;
   }
   
-  /* Mobile adjustments */
   @media (max-width: 768px) {
     * {
       cursor: auto !important;
@@ -49,7 +49,7 @@
   }
   
   .glass-panel {
-    @apply backdrop-blur-xl;
+    backdrop-filter: blur(20px);
     background: rgba(37, 37, 45, 0.4);
   }
   
@@ -57,20 +57,42 @@
     background: rgba(255, 255, 255, 0.4);
   }
   
-  .neon-glow {
-    @apply transition-all duration-300;
-  }
-  
-  .neon-glow:hover {
-    text-shadow: 0 0 8px rgba(168, 255, 225, 0.8);
-  }
-}
-
-@layer utilities {
   .text-gradient {
     background: linear-gradient(135deg, #a8ffe1 0%, #ff51fa 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+  
+  .glitch-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .glitch-hover:hover {
+    transform: scale(1.02);
+  }
+  
+  .magnetic-button {
+    transition: transform 0.2s ease-out;
+  }
+}
+
+@layer utilities {
+  .scan-line {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #a8ffe1, #ff51fa, transparent);
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+    animation: scan 8s linear infinite;
+    pointer-events: none;
+    z-index: 10000;
+  }
+  
+  @keyframes scan {
+    0% { top: -10%; }
+    100% { top: 110%; }
   }
 }

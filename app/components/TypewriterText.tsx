@@ -26,7 +26,7 @@ export default function TypewriterText({
       const currentText = texts[currentTextIndex];
 
       if (isDeleting) {
-        setCurrentDisplayText(currentDisplayText.slice(0, -1));
+        setCurrentDisplayText((prev) => prev.slice(0, -1));
         if (currentDisplayText.length === 0) {
           setIsDeleting(false);
           setCurrentTextIndex((currentTextIndex + 1) % texts.length);
@@ -60,7 +60,7 @@ export default function TypewriterText({
   ]);
 
   return (
-    <span className="text-secondary font-mono">
+    <span className="text-[#ff51fa] font-mono">
       {currentDisplayText}
       <span className="animate-pulse">_</span>
     </span>

@@ -21,14 +21,18 @@ export default function CustomCursor() {
     const handleMouseLeave = () => setIsExpanded(false);
 
     document.addEventListener("mousemove", updatePosition);
-    document.querySelectorAll("button, a, .interactive").forEach((el) => {
+
+    const interactiveElements = document.querySelectorAll(
+      "button, a, .interactive",
+    );
+    interactiveElements.forEach((el) => {
       el.addEventListener("mouseenter", handleMouseEnter);
       el.addEventListener("mouseleave", handleMouseLeave);
     });
 
     return () => {
       document.removeEventListener("mousemove", updatePosition);
-      document.querySelectorAll("button, a, .interactive").forEach((el) => {
+      interactiveElements.forEach((el) => {
         el.removeEventListener("mouseenter", handleMouseEnter);
         el.removeEventListener("mouseleave", handleMouseLeave);
       });
@@ -39,12 +43,14 @@ export default function CustomCursor() {
 
   return (
     <div
-      className={`custom-cursor fixed pointer-events-none z-[9999] rounded-full border-2 border-primary transition-all duration-200 backdrop-blur-sm
-        ${isExpanded ? "w-12 h-12 bg-primary/15 border-primary/50" : "w-6 h-6"}`}
+      className="fixed pointer-events-none z-[9999] rounded-full border-2 border-[#a8ffe1] transition-all duration-200 backdrop-blur-sm"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
         transform: "translate(-50%, -50%)",
+        width: isExpanded ? "48px" : "24px",
+        height: isExpanded ? "48px" : "24px",
+        background: isExpanded ? "rgba(168, 255, 225, 0.15)" : "transparent",
       }}
     />
   );
